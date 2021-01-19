@@ -8,4 +8,4 @@ instance AutoRoute StaticController
 instance AutoRoute PiecesController
 instance AutoRoute UsersController
 instance AutoRoute GameRecordsController
-
+instance AutoRoute SessionsController

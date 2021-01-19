@@ -1,5 +1,6 @@
 module Web.Types where
 
+import IHP.LoginSupport.Types
 import IHP.Prelude
 import IHP.ModelSupport
 import Generated.Types
@@ -40,4 +41,15 @@ data GameRecordsController
     | EditGameRecordAction { gameRecordId :: !(Id GameRecord) }
     | UpdateGameRecordAction { gameRecordId :: !(Id GameRecord) }
     | DeleteGameRecordAction { gameRecordId :: !(Id GameRecord) }
+    deriving (Eq, Show, Data)
+
+instance HasNewSessionUrl User where
+  newSessionUrl _ = "/NewSession"
+
+type instance CurrentUserRecord = User
+
+data SessionsController
+    = NewSessionAction
+    | CreateSessionAction
+    | DeleteSessionAction
     deriving (Eq, Show, Data)

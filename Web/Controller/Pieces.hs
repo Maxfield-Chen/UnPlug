@@ -52,4 +52,4 @@ instance Controller PiecesController where
         redirectTo PiecesAction
 
 buildPiece piece = piece
-    |> fill @["pieceType","x","y","gameRecordId","ownerId"]
+    |> fill @["pieceType","x","y"]

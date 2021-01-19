@@ -20,7 +20,5 @@ renderForm piece = formFor piece [hsx|
     {(textField #pieceType)}
     {(textField #x)}
     {(textField #y)}
-    {(textField #gameRecordId)}
-    {(textField #ownerId)}
     {submitButton}
 |]

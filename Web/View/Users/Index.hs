@@ -7,6 +7,9 @@ instance View IndexView where
     html IndexView { .. } = [hsx|
         <nav>
             <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{NewSessionAction}">Login</a>
+            </li>
                 <li class="breadcrumb-item active"><a href={UsersAction}>Users</a></li>
             </ol>
         </nav>

@@ -1,5 +1,7 @@
 module Web.FrontController where
 
+import IHP.LoginSupport.Middleware
+import Web.Controller.Sessions
 import IHP.AutoRefresh
 import IHP.RouterPrelude
 import Web.Controller.Prelude
@@ -18,9 +20,11 @@ instance FrontController WebApplication where
         , parseRoute @GameRecordsController
         , parseRoute @UsersController
         , parseRoute @PiecesController
+        , parseRoute @SessionsController
         ]
 
 instance InitControllerContext WebApplication where
     initContext = do
         setLayout defaultLayout
         initAutoRefresh
+        initAuthentication @User
