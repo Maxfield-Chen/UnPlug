@@ -18,7 +18,6 @@ CREATE TABLE users (
 CREATE TABLE game_records (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
-    winning_user UUID DEFAULT NULL,
     completed_at TIMESTAMP WITH TIME ZONE DEFAULT NULL,
     social_win_threshold INT NOT NULL,
     assistance_win_threshold INT NOT NULL,
@@ -30,7 +29,13 @@ CREATE TABLE cards (
     user_id UUID NOT NULL,
     card_type card_type NOT NULL
 );
+CREATE TYPE event_types AS ENUM ('push');
+CREATE TABLE events (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
+    event_type event_types NOT NULL,
+    game UUID DEFAULT uuid_generate_v4() NOT NULL
+);
 ALTER TABLE cards ADD CONSTRAINT cards_ref_game_record_id FOREIGN KEY (game_record_id) REFERENCES game_records (id) ON DELETE NO ACTION;
 ALTER TABLE cards ADD CONSTRAINT cards_ref_user_id FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE NO ACTION;
 ALTER TABLE users ADD CONSTRAINT current_game FOREIGN KEY (current_game) REFERENCES game_records (id) ON DELETE NO ACTION;
-ALTER TABLE game_records ADD CONSTRAINT winning_user FOREIGN KEY (winning_user) REFERENCES users (id) ON DELETE NO ACTION;
+ALTER TABLE events ADD CONSTRAINT game FOREIGN KEY (game) REFERENCES game_records (id) ON DELETE NO ACTION;
