@@ -7,13 +7,22 @@ CREATE TABLE users (
     password_hash TEXT NOT NULL,
     failed_login_attempts INT DEFAULT 0 NOT NULL,
     locked_at TIMESTAMP WITH TIME ZONE DEFAULT NULL,
-    current_game UUID DEFAULT NULL
+    current_game UUID DEFAULT NULL,
+    prose_points INT DEFAULT 0 NOT NULL,
+    assistance_points INT DEFAULT 0 NOT NULL,
+    social_points INT DEFAULT 0 NOT NULL,
+    prose_wins INT DEFAULT 0 NOT NULL,
+    assistance_wins INT DEFAULT 0 NOT NULL,
+    social_wins INT DEFAULT 0 NOT NULL
 );
 CREATE TABLE game_records (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
     winning_user UUID DEFAULT NULL,
-    completed_at TIMESTAMP WITH TIME ZONE DEFAULT NULL
+    completed_at TIMESTAMP WITH TIME ZONE DEFAULT NULL,
+    social_win_threshold INT NOT NULL,
+    assistance_win_threshold INT NOT NULL,
+    prose_win_threshold INT NOT NULL
 );
 CREATE TABLE cards (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
