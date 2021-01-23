@@ -10,10 +10,10 @@ instance Controller UsersController where
     action UsersAction = do
         users <- query @User |> fetch
         render IndexView { .. }
-
+        
     action NewUserAction = do
-        let user = newRecord
-        render NewView { .. }
+      let user = newRecord @User
+      render NewView { .. } 
 
     action ShowUserAction { userId } = do
         user <- fetch userId
@@ -47,7 +47,8 @@ instance Controller UsersController where
                     user <- user
                       |> set #passwordHash hashed
                       |> createRecord
-                    setSuccessMessage "You have been successfully registered for Bugs Vs. Bots."
+                    setSuccessMessage (show user)
+                    redirectTo UsersAction
 
     action DeleteUserAction { userId } = do
         user <- fetch userId

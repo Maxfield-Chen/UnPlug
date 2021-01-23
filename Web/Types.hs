@@ -23,9 +23,9 @@ data PiecesController
 
 data UsersController
     = UsersAction
-    | NewUserAction
+    | NewUserAction 
     | ShowUserAction { userId :: !(Id User) }
-    | CreateUserAction
+    | CreateUserAction  
     | EditUserAction { userId :: !(Id User) }
     | UpdateUserAction { userId :: !(Id User) }
     | DeleteUserAction { userId :: !(Id User) }

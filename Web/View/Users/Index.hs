@@ -9,24 +9,10 @@ instance View IndexView where
             <ol class="breadcrumb">
             <li class="breadcrumb-item">
               <a href="{NewSessionAction}">Login</a>
+              <a href="{NewSessionAction}">Register</a>
             </li>
-                <li class="breadcrumb-item active"><a href={UsersAction}>Users</a></li>
             </ol>
         </nav>
-        <h1>Index <a href={pathTo NewUserAction} class="btn btn-primary ml-4">+ New</a></h1>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>User</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>{forEach users renderUser}</tbody>
-            </table>
-        </div>
     |]
 
 
