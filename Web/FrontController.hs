@@ -10,7 +10,6 @@ import Web.View.Layout (defaultLayout)
 -- Controller Imports
 import Web.Controller.GameRecords
 import Web.Controller.Users
-import Web.Controller.Pieces
 import Web.Controller.Static
 
 instance FrontController WebApplication where
@@ -19,7 +18,6 @@ instance FrontController WebApplication where
         -- Generator Marker
         , parseRoute @GameRecordsController
         , parseRoute @UsersController
-        , parseRoute @PiecesController
         , parseRoute @SessionsController
         ]
 

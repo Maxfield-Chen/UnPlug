@@ -41,7 +41,7 @@ instance Controller UsersController where
             |> validateField #email isEmail
             |> validateField #passwordHash nonEmpty
             |> ifValid \case
-                Left user -> render NewView { .. } 
+                Left user -> render NewView { .. }
                 Right user -> do
                     hashed <- hashPassword (get #passwordHash user)
                     user <- user

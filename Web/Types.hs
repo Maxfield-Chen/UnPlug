@@ -10,22 +10,13 @@ data WebApplication = WebApplication deriving (Eq, Show)
 
 data StaticController = WelcomeAction deriving (Eq, Show, Data)
 
-data PiecesController
-    = PiecesAction
-    | NewPieceAction
-    | ShowPieceAction { pieceId :: !(Id Piece) }
-    | CreatePieceAction
-    | EditPieceAction { pieceId :: !(Id Piece) }
-    | UpdatePieceAction { pieceId :: !(Id Piece) }
-    | DeletePieceAction { pieceId :: !(Id Piece) }
-    deriving (Eq, Show, Data)
 
 
 data UsersController
     = UsersAction
-    | NewUserAction 
+    | NewUserAction
     | ShowUserAction { userId :: !(Id User) }
-    | CreateUserAction  
+    | CreateUserAction
     | EditUserAction { userId :: !(Id User) }
     | UpdateUserAction { userId :: !(Id User) }
     | DeleteUserAction { userId :: !(Id User) }

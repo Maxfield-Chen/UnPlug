@@ -26,7 +26,6 @@ instance Controller GameRecordsController where
     action UpdateGameRecordAction { gameRecordId } = do
         gameRecord <- fetch gameRecordId
         gameRecord
-            |> buildGameRecord
             |> ifValid \case
                 Left gameRecord -> render EditView { .. }
                 Right gameRecord -> do
@@ -37,7 +36,6 @@ instance Controller GameRecordsController where
     action CreateGameRecordAction = do
         let gameRecord = newRecord @GameRecord
         gameRecord
-            |> buildGameRecord
             |> ifValid \case
                 Left gameRecord -> render NewView { .. } 
                 Right gameRecord -> do
@@ -51,5 +49,5 @@ instance Controller GameRecordsController where
         setSuccessMessage "GameRecord deleted"
         redirectTo GameRecordsAction
 
-buildGameRecord gameRecord = gameRecord
-    |> fill @["botUser", "natureUser"]
+-- buildGameRecord gameRecord = gameRecord
+--     |> fill @["botUser", "natureUser"]

@@ -8,8 +8,10 @@ instance View IndexView where
         <nav>
             <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="{NewSessionAction}">Login</a>
-              <a href="{NewSessionAction}">Register</a>
+              <a href={NewSessionAction}>Login</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href={NewUserAction}>Register</a>
             </li>
             </ol>
         </nav>
