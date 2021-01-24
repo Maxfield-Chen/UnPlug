@@ -1,7 +1,7 @@
 module Web.View.GameRecords.Show where
 import Web.View.Prelude
 
-data ShowView = ShowView { gameRecord :: GameRecord }
+data ShowView = ShowView { gameRecord :: Include "users" GameRecord }
 
 instance View ShowView where
     html ShowView { .. } = [hsx|
@@ -11,6 +11,8 @@ instance View ShowView where
                 <li class="breadcrumb-item active">Show GameRecord</li>
             </ol>
         </nav>
-        <h1>Show GameRecord</h1>
+        <h1>GameRecord</h1>
         <p>{gameRecord}</p>
+        <h1>Users</h1>
+        <p>{get #users gameRecord}</p>
     |]
