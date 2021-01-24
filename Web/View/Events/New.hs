@@ -19,9 +19,5 @@ renderForm :: Event -> Html
 renderForm event = formFor event [hsx|
     {(textField #eventType)}
     {(textField #game)}
-<<<<<<< HEAD
-    -- if anything is added to database since the controller autogen, we would need to update the connection here
-=======
->>>>>>> 0e99b8ffee19da4f2ecfbcf29432a3b39d698abd
     {submitButton}
 |]

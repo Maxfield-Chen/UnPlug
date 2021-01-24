@@ -32,7 +32,6 @@ instance Controller UsersController where
                 Right user -> do
                     user <- user |> updateRecord
                     setSuccessMessage "User updated"
-                    redirectTo EditUserAction { .. }
 
     action CreateUserAction = do
         let user = newRecord @User
@@ -57,4 +56,4 @@ instance Controller UsersController where
         redirectTo UsersAction
 
 buildUser user = user
-    |> fill @'[]
+    |> fill @'["currentGame"]
