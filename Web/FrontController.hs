@@ -8,6 +8,7 @@ import Web.Controller.Prelude
 import Web.View.Layout (defaultLayout)
 
 -- Controller Imports
+import Web.Controller.Events
 import Web.Controller.GameRecords
 import Web.Controller.Users
 import Web.Controller.Static
@@ -16,6 +17,7 @@ instance FrontController WebApplication where
     controllers = 
         [ startPage WelcomeAction
         -- Generator Marker
+        , parseRoute @EventsController
         , parseRoute @GameRecordsController
         , parseRoute @UsersController
         , parseRoute @SessionsController
