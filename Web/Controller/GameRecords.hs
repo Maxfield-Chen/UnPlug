@@ -11,7 +11,7 @@ instance Controller GameRecordsController where
         gameRecords <- query @GameRecord |> fetch
         render IndexView { .. }
 
-    action NewGameRecordAction {natureUserId, botUserId} = do
+    action NewGameRecordAction = do
         let gameRecord = newRecord
         render NewView { .. }
 

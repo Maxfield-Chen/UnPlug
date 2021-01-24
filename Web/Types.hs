@@ -24,9 +24,7 @@ data UsersController
 
 data GameRecordsController
     = GameRecordsAction
-    | NewGameRecordAction { natureUserId :: !(Id User)
-                          , botUserId :: !(Id User)
-                          }
+    | NewGameRecordAction 
     | ShowGameRecordAction { gameRecordId :: !(Id GameRecord) }
     | CreateGameRecordAction
     | EditGameRecordAction { gameRecordId :: !(Id GameRecord) }

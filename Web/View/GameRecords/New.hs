@@ -17,5 +17,8 @@ instance View NewView where
 
 renderForm :: GameRecord -> Html
 renderForm gameRecord = formFor gameRecord [hsx|
+    {numberField #socialWinThreshold}
+    {numberField #assistanceWinThreshold}
+    {numberField #proseWinThreshold}
     {submitButton}
 |]
