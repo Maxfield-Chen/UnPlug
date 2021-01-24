@@ -16,7 +16,7 @@ instance Controller GameRecordsController where
         render NewView { .. }
 
     action ShowGameRecordAction { gameRecordId } = do
-        gameRecord <- fetch gameRecordId
+        gameRecord <- fetch gameRecordId >>= fetchRelated #users
         render ShowView { .. }
 
     action EditGameRecordAction { gameRecordId } = do
