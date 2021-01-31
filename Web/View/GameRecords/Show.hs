@@ -19,7 +19,7 @@ instance View ShowView where
           </ul>
         <h1>Users</h1>
         <div>{ forEach (get #users gameRecord) renderUser}</div>
-        { renderUserList users}
+        { renderUserList users }
     |]
 
 renderUser user = [hsx|
@@ -30,8 +30,8 @@ renderUser user = [hsx|
         <p class="card-text">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Prose: { get #prosePoints user}</li>
-            <li class="list-group-item">Assistance{ get #assistancePoints user}</li>
-            <li class="list-group-item">Social{ get #socialPoints user}</li>
+            <li class="list-group-item">Assistance: { get #assistancePoints user}</li>
+            <li class="list-group-item">Social: {get #socialPoints user}</li>
           </ul>
         </p>
       </div>
@@ -49,8 +49,11 @@ renderUserList users = [hsx|
     </div>
 |]
 
-addUser user = [hsx|
+addUser user = formFor' user "UpdateUser" [hsx|
       <div class="card card-body">
-        {user}
+        <p>UserName: {get #email user}</p>
+        { hiddenField #id }
+        { hiddenField #currentGame }
+        {submitButton { label = "Add to Game"}}
       </div>
 |]

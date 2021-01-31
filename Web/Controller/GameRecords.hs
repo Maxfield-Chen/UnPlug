@@ -16,7 +16,7 @@ instance Controller GameRecordsController where
         render NewView { .. }
 
     action ShowGameRecordAction { gameRecordId } = do
-        users <- query @User |> fetch
+        users <- fmap (set #currentGame (Just gameRecordId)) <$> query @User |> fetch
         gameRecord <- fetch gameRecordId >>= fetchRelated #users
         render ShowView { .. }
 

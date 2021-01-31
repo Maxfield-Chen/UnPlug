@@ -14,7 +14,7 @@ import Web.Controller.Users
 import Web.Controller.Static
 
 instance FrontController WebApplication where
-    controllers = 
+    controllers =
         [ startPage WelcomeAction
         -- Generator Marker
         , parseRoute @EventsController

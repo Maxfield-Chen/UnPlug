@@ -26,7 +26,6 @@ instance Controller UsersController where
     action UpdateUserAction { userId } = do
         user <- fetch userId
         user
-            |> buildUser
             |> ifValid \case
                 Left user -> render EditView { .. }
                 Right user -> do

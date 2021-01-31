@@ -16,7 +16,6 @@ instance View EditView where
     |]
 
 renderForm :: GameRecord -> Html
-
 renderForm gameRecord = formFor gameRecord [hsx|
     {submitButton}
 |]
