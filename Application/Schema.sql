@@ -27,7 +27,7 @@ CREATE TABLE cards (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
     game_record_id UUID NOT NULL,
     user_id UUID NOT NULL,
-    card_type card_type NOT NULL
+    card_type card_types NOT NULL
 );
 CREATE TYPE event_types AS ENUM ('push');
 CREATE TABLE events (

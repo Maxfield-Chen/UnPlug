@@ -15,6 +15,7 @@ instance View IndexView where
             </li>
             </ol>
         </nav>
+        {forEach users renderUser}
     |]
 
 

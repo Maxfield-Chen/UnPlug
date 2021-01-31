@@ -1,3 +1,5 @@
+{-# Language AllowAmbiguousTypes #-}
+
 module Web.View.GameRecords.Show where
 import Web.View.Prelude
 
@@ -24,7 +26,6 @@ instance View ShowView where
 
 renderUser user = [hsx|
     <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{ get #email user}</h5>
         <p class="card-text">
@@ -40,7 +41,7 @@ renderUser user = [hsx|
 
 renderUserList users = [hsx|
     <p>
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#userList" aria-expanded="false" aria-controls="userList">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#userList" aria-expanded="false" aria-controls="userList">
       Add User To Game
   </button>
     </p>
@@ -49,11 +50,11 @@ renderUserList users = [hsx|
     </div>
 |]
 
-addUser user = formFor' user "UpdateUser" [hsx|
+addUser user = (formFor user [hsx|
       <div class="card card-body">
         <p>UserName: {get #email user}</p>
-        { hiddenField #id }
+        { hiddenField #email }
         { hiddenField #currentGame }
         {submitButton { label = "Add to Game"}}
       </div>
-|]
+|])

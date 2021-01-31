@@ -1,5 +1,6 @@
 module Web.Controller.Users where
 
+import Data.Maybe (fromJust)
 import Web.Controller.Prelude
 import Web.View.Users.Index
 import Web.View.Users.New
@@ -24,13 +25,16 @@ instance Controller UsersController where
         render EditView { .. }
 
     action UpdateUserAction { userId } = do
-        user <- fetch userId
+        user :: User <- fetch userId
+        let currentGame = param "currentGame" ::  Maybe (Id' "game_records")
         user
+            |> fill @["email", "currentGame"]
             |> ifValid \case
                 Left user -> render EditView { .. }
                 Right user -> do
                     user <- user |> updateRecord
                     setSuccessMessage "User updated"
+                    redirectTo GameRecordsAction
 
     action CreateUserAction = do
         let user = newRecord @User
