@@ -26,7 +26,6 @@ instance Controller UsersController where
 
     action UpdateUserAction { userId } = do
         user :: User <- fetch userId
-        let currentGame = param "currentGame" ::  Maybe (Id' "game_records")
         user
             |> fill @'["currentGame"]
             |> ifValid \case
