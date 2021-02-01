@@ -28,7 +28,7 @@ instance Controller UsersController where
         user :: User <- fetch userId
         let currentGame = param "currentGame" ::  Maybe (Id' "game_records")
         user
-            |> fill @["email", "currentGame"]
+            |> fill @'["currentGame"]
             |> ifValid \case
                 Left user -> render EditView { .. }
                 Right user -> do
